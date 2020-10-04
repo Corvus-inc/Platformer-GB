@@ -9,9 +9,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/2D Ice Platform Pack/
-/[Ss]pine2D Knight Character Animation Pack/
-/[Zz]ero Rare/
+/[Aa]ssets/2D Ice Platform Pack/
+/[Aa]ssets/[Ss]pine2D Knight Character Animation Pack/
+/[Aa]ssets/[Zz]ero Rare/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
