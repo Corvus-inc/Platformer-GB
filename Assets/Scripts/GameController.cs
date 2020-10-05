@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject lastEnemy;
+   
     public GameObject prefabEnemy;
     public float enemyCount;
 
-    private Rect rectSpawn;
+    private  Rect rectSpawn;
     private bool enemySpawner;
     private float randomX;
-    private float randomY;
+    private float randomY; 
+    private GameObject lastEnemy;
 
     void Start()
     {

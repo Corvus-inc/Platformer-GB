@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
             jump = true;
             Debug.Log("JumpPlayer");
         }
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             var fire = Instantiate<GameObject>(bullet, gameObject.transform.position, transform.rotation);
             fire.transform.localScale = transform.localScale;
@@ -44,28 +44,29 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
-        if (h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+        if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0 && h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+                Debug.Log(Input.GetAxis("Horizontal"));
         }
-        if (Math.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(Math.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
-        }
-        if (h<0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (h>0 && facingRight)
+        //if (Math.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
+        //{
+        //    GetComponent<Rigidbody2D>().velocity = new Vector2(Math.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        //}
+        if (h < 0 && !facingRight)
         {
             Flip();
         }
-        if(jump)
+        else if (h > 0 && facingRight)
+        {
+            Flip();
+        }
+        if (jump)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
-        
+
     }
     private void Flip()
     {
